@@ -1,8 +1,6 @@
-
+<!-- 
 <div class="wrapper">
-  <!-- Sidebar -->
 <app-sidenav></app-sidenav>
-  <!-- End Sidebar -->
 
   <div class="main-panel">
 <app-topnav></app-topnav>
@@ -13,7 +11,6 @@
 
         <nz-page-header class="site-page-header" nzBackIcon>
           <nz-page-header-title>Add User</nz-page-header-title>
-          <!-- <nz-page-header-subtitle>This is a subtitle</nz-page-header-subtitle> -->
            
    
    
@@ -108,62 +105,13 @@
                         </nz-form-control>
                       </nz-form-item>
                     
-                      <!-- <nz-form-item>
-                        <nz-form-label [nzRequired]="true">Password</nz-form-label>
-                        <nz-form-control 
-                          [nzErrorTip]="'Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.'" 
-                          [nzValidateStatus]="pwd.invalid && (pwd.dirty || pwd.touched) ? 'error' : ''">
-                          
-                          <nz-input-group [nzSuffix]="passwordIcon">
-                            <input nz-input 
-                                   [type]="isPasswordVisible ? 'text' : 'password'" 
-                                   placeholder="Password" 
-                                   name="pwd"
-                                   [(ngModel)]="userData.pwd" 
-                                   required 
-                                   #pwd="ngModel"
-                                   (focus)="onFocus(true)" 
-                                   (blur)="onFocus(false)" 
-                                   [ngClass]="{ 'highlight-border': isFocused }"
-                                   pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}">
-                          </nz-input-group>
-                      
-                          <ng-template #passwordIcon>
-                            <i nz-icon nzTheme="outline" 
-                               [nzType]="isPasswordVisible ? 'eye-invisible' : 'eye'" 
-                               class="cursor-pointer" 
-                               (click)="togglePasswordVisibility()">
-                            </i>
-                          </ng-template>
-                      
-                        </nz-form-control>
-                      </nz-form-item> -->
-                      
-                      
-                      
+             
                    
                      
                     </div>
                     
                     <div class="col-sm-3 col-md-3">
                    
-                      <!-- <nz-form-item>
-                        <nz-form-label [nzRequired]="true">Confirm Password</nz-form-label>
-                        <nz-form-control [nzErrorTip]="'Passwords do not match.'" 
-                                         [nzValidateStatus]="confirmPwd.invalid && (confirmPwd.dirty || confirmPwd.touched) ? 'error' : ''">
-                          <nz-input-group [nzSuffix]="confirmPasswordIcon">
-                            <input nz-input [type]="isConfirmPasswordVisible ? 'text' : 'password'" placeholder="Confirm Password" name="confirmPwd"
-                                   [(ngModel)]="userData.confirmPwd" required #confirmPwd="ngModel"
-                                   (focus)="onFocus(true)" (blur)="onFocus(false)" 
-                                   [ngClass]="{ 'highlight-border': isFocused }">
-                          </nz-input-group>
-                          <ng-template #confirmPasswordIcon>
-                            <i nz-icon [nzType]="isConfirmPasswordVisible ? 'eye-invisible' : 'eye'" 
-                               (click)="toggleConfirmPasswordVisibility()" class="cursor-pointer"></i>
-                          </ng-template>
-                        </nz-form-control>
-                      </nz-form-item> -->
-                      
 
                       <nz-form-item>
                         <nz-form-label [nzRequired]="true">C Password</nz-form-label>
@@ -222,17 +170,7 @@
                     <div class="row">
                       <div class="col-sm-3 col-md-3">
                         <div class="mb-3">
-                          <!-- <nz-form-item> -->
-                            <!-- <nz-form-label>Reporting Manager</nz-form-label> -->
-                           
-                            <!-- <nz-form-item>
-                              <nz-form-label [nzRequired]="true">Role Name</nz-form-label>
-                              <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a person" [(ngModel)]="selectedValue">
-                                <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
-                                <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
-                                <nz-option nzLabel="Tom" nzValue="tom"></nz-option>
-                              </nz-select>
-                            </nz-form-item> -->
+                    
                              <nz-form-item>
                               <nz-form-label [nzRequired]="true">Role Name</nz-form-label>
                               <nz-form-control [nzErrorTip]="'Role name is required.'" 
@@ -243,26 +181,16 @@
                               </nz-form-control>
                             </nz-form-item>
                             
-                          <!-- </nz-form-item> -->
                           
                         </div>
                       </div>
                       <div class="col-sm-3 col-md-3">
                         <div class="mb-3">
-                          <!-- <nz-form-item> -->
                             <nz-form-label>Accessible Stations</nz-form-label>
-                            <!-- <nz-form-control>
-                              <nz-select [(ngModel)]="userData.locationid" name="location_id" (ngModelChange)="onLocationChange()" 
-                                         nzMode="multiple" nzPlaceHolder="Select Accessible Stations">
-                                         <nz-option [nzValue]="'Sagar Society'" [nzLabel]="'Sagar Society'"></nz-option>
-                                         <nz-option [nzValue]="'Vasantha nagar'" [nzLabel]="'Vasantha nagar'"></nz-option>
-                                         <nz-option [nzValue]="'BanjaraHills'" [nzLabel]="'BanjaraHills'"></nz-option>
-                              </nz-select>
-                            </nz-form-control> -->
+                        
 
 
                             <nz-form-item>
-                              <!-- <nz-form-label [nzRequired]="true">Role Name</nz-form-label> -->
                               <nz-form-control [nzErrorTip]="'Role name is required.'" 
                                                [nzValidateStatus]="role.invalid && (role.dirty || role.touched) ? 'error' : ''">
                                 <input nz-input placeholder="Role Name" name="role" [(ngModel)]="userData.role" required #role="ngModel"
@@ -270,7 +198,6 @@
                                        [ngClass]="{ 'highlight-border': isFocused }">
                               </nz-form-control>
                             </nz-form-item>
-                          <!-- </nz-form-item> -->
                           
                           
                           
@@ -315,7 +242,6 @@
                 </div>
                 <div class="card-footer text-end pt-0 mb-3 mt-5">
                   <button mat-flat-button class="btn btn-primary" type="submit" (click)= 'addUser()'>Submit</button>
-                  <!-- <button class="btn btn-primary" type="submit">Submit</button> -->
                 </div>
               </form>
             </div>
@@ -328,4 +254,4 @@
 <app-footer></app-footer>
   </div>
 </div>
-
+ -->
