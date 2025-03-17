@@ -4,6 +4,8 @@
 // import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 // import { FormsModule } from '@angular/forms';
 
+import { Component } from "@angular/core";
+
 // import { NzSelectModule } from 'ng-zorro-antd/select';
 
 @Component({
