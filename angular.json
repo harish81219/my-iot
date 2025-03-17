@@ -16,7 +16,7 @@
             "outputPath": "dist/iot",
             "index": "src/index.html",
             "main": "src/main.ts",
-            "aot": false,
+            "aot": true,
             "polyfills": [
               "zone.js"
             ],
