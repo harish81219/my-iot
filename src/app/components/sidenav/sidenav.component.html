@@ -1,0 +1,191 @@
+<div class="sidebar" data-background-color="dark">
+    <div class="sidebar-logo">
+      <!-- Logo Header -->
+      <div class="logo-header" data-background-color="dark">
+        <a [routerLink]="['/dashboard']" class="logo">
+          <img
+            src="assets/img/Logo-Transparency.png"
+            alt="navbar brand"
+            class="navbar-brand mt-5"
+            height="20"
+          />
+        </a>
+        
+        <div class="nav-toggle">
+          <button class="btn btn-toggle toggle-sidebar">
+            <i class="gg-menu-right"></i>
+          </button>
+          <button class="btn btn-toggle sidenav-toggler">
+            <i class="gg-menu-left"></i>
+          </button>
+        </div>
+        <button class="topbar-toggler more">
+          <i class="gg-more-vertical-alt"></i>
+        </button>
+      </div>
+      <!-- End Logo Header -->
+    </div>
+    <div class="sidebar-wrapper h-screen overflow-auto">
+      <div class="sidebar-content pt-5">
+        <ul class="nav nav-secondary">
+          <!-- Dashboard -->
+          <li class="nav-item transition-all duration-300 ease-in-out hover:bg-gray-100"
+          [routerLinkActive]="'active-tab'"
+          [routerLinkActiveOptions]="{ exact: true }">
+        <a [routerLink]="['/dashboard']" class="flex items-center px-4 py-2">
+          <i class="fas fa-tachometer-alt mr-2 text-color hover:text-blue-500"></i>
+          <p class="text-color hover:text-blue-500">Dashboard</p>
+        </a>
+      </li>
+      
+
+    
+          <!-- Edge -->
+          <li class="nav-item transition-all duration-300 ease-in-out hover:bg-gray-100"
+          [routerLinkActive]="'active-tab'"
+          [routerLinkActiveOptions]="{ exact: true }">
+        <a [routerLink]="['/index1']" class="flex items-center px-4 py-2">
+          <i class="fas fa-chart-line mr-2 text-color"></i>
+          <p class="text-color">Edge</p>
+        </a>
+      </li>
+      
+          <!-- Devices -->
+          <li class="nav-item transition-all duration-300 ease-in-out hover:bg-gray-100"  [routerLinkActive]="'active-tab'"
+          [routerLinkActiveOptions]="{ exact: true }">
+            <a data-bs-toggle="collapse"  [routerLink]="['/adddevice']" class="flex items-center px-4 py-2">
+              <i class="fas fa-cogs mr-2 text-color hover:text-blue-500"></i>
+              <p class="text-color hover:text-blue-500">Devices</p>
+              <span class="caret ml-auto text-xs transform rotate-180"></span>
+            </a>
+            <div class="collapse" id="addDevice">
+              <ul class="nav nav-collapse">
+                <li>
+                  <a href="forms/forms.html" class="text-color hover:text-blue-500 pl-4 py-2">Add Device</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+    
+          <!-- Users -->
+          <li class="nav-item transition-all duration-300 ease-in-out hover:bg-gray-100"  [routerLinkActive]="'active-tab'"
+          [routerLinkActiveOptions]="{ exact: true }">
+            <a data-bs-toggle="collapse"  [routerLink]="['/adduser']"  class="flex items-center px-4 py-2">
+              <i class="fas fa-users mr-2 text-color hover:text-blue-500"></i>
+              <p class="text-color hover:text-blue-500">Users</p>
+              <span class="caret ml-auto text-xs transform rotate-180"></span>
+            </a>
+            <div class="collapse" id="users">
+              <ul class="nav nav-collapse">
+                <li>
+                  <a href="tables/tables.html" class="text-color hover:text-blue-500 pl-4 py-2">Add User</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+    
+          <!-- Location -->
+          <li class="nav-item transition-all duration-300 ease-in-out hover:bg-gray-100"  [routerLinkActive]="'active-tab'"
+          [routerLinkActiveOptions]="{ exact: true }">
+            <a data-bs-toggle="collapse"  [routerLink]="['/addlocation']" class="flex items-center px-4 py-2">
+              <i class="fas fa-map-marker-alt mr-2 text-color hover:text-blue-500"></i>
+              <p class="text-color hover:text-blue-500">Location</p>
+              <span class="caret ml-auto text-xs transform rotate-180"></span>
+            </a>
+            <div class="collapse" id="addLocation">
+              <ul class="nav nav-collapse">
+                <li>
+                  <a href="maps/googlemaps.html" class="text-color hover:text-blue-500 pl-4 py-2">Add Location</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+    
+          <!-- Add Sensor -->
+          <!-- <li class="nav-item transition-all duration-300 ease-in-out hover:bg-gray-100"  [routerLinkActive]="'active-tab'"
+          [routerLinkActiveOptions]="{ exact: true }">
+            <a data-bs-toggle="collapse" [routerLink]="['/addSensor']" class="flex items-center px-4 py-2">
+              <i class="fas fa-sensor mr-2 text-color hover:text-blue-500"></i>
+              <p class="text-color hover:text-blue-500">Add Sensor</p>
+            </a>
+          </li> -->
+    
+          <!-- Plots -->
+          <li class="nav-item transition-all duration-300 ease-in-out hover:bg-gray-100"  [routerLinkActive]="'active-tab'"
+          [routerLinkActiveOptions]="{ exact: true }">
+            <a data-bs-toggle="collapse" [routerLink]="['/plots']" class="flex items-center px-4 py-2">
+              <i class="fas fa-chart-area mr-2 text-color hover:text-blue-500"></i>
+              <p class="text-color hover:text-blue-500">Plots</p>
+            </a>
+          </li>
+    
+          <!-- Reports -->
+          <li class="nav-item transition-all duration-300 ease-in-out hover:bg-gray-100"  [routerLinkActive]="'active-tab'"
+          [routerLinkActiveOptions]="{ exact: true }">
+            <a data-bs-toggle="collapse" [routerLink]="['/reports']" class="flex items-center px-4 py-2">
+              <i class="fas fa-file-alt mr-2 text-color hover:text-blue-500"></i>
+              <p class="text-color hover:text-blue-500">Reports</p>
+            </a>
+          </li>
+
+
+          <li class="nav-item transition-all duration-300 ease-in-out hover:bg-gray-100"  [routerLinkActive]="'active-tab'"
+          [routerLinkActiveOptions]="{ exact: true }">
+            <a data-bs-toggle="collapse" [routerLink]="['/maps']" class="flex items-center px-4 py-2">
+              <i class="fas fa-file-alt mr-2 text-color hover:text-blue-500"></i>
+              <p class="text-color hover:text-blue-500">Maps</p>
+            </a>
+          </li>
+
+
+          
+
+
+          <li class="nav-item transition-all duration-300 ease-in-out hover:bg-gray-100"  [routerLinkActive]="'active-tab'"
+          [routerLinkActiveOptions]="{ exact: true }">
+            <a data-bs-toggle="collapse" [routerLink]="['/tickets']" class="flex items-center px-4 py-2">
+              <i class="fas fa-ticket-alt mr-2 text-color hover:text-blue-500"></i>
+              <p class="text-color hover:text-blue-500">Tickets</p>
+            </a>
+          </li>
+    
+          <!-- Data Upload -->
+          <li class="nav-item transition-all duration-300 ease-in-out hover:bg-gray-100"  [routerLinkActive]="'active-tab'"
+          [routerLinkActiveOptions]="{ exact: true }">
+            <a data-bs-toggle="collapse" [routerLink]="['/dataUpload']" class="flex items-center px-4 py-2">
+              <i class="fas fa-cloud-upload-alt mr-2 text-color hover:text-blue-500"></i>
+              <p class="text-color hover:text-blue-500">Data Upload</p>
+            </a>
+          </li>
+
+
+          <li class="nav-item transition-all duration-300 ease-in-out hover:bg-gray-100"  [routerLinkActive]="'active-tab'"
+          [routerLinkActiveOptions]="{ exact: true }">
+            <a data-bs-toggle="collapse" [routerLink]="['/rateus']" class="flex items-center px-4 py-2">
+              <i class="fas fa-star text-yellow-500 mr-2 text-color hover:text-blue-500"></i>
+              <p class="text-color hover:text-blue-500">Rate US</p>
+            </a>
+          </li>
+    
+          <!-- Log Out -->
+          <li class="nav-item transition-all duration-300 ease-in-out hover:bg-gray-100">
+            <a (click)="logout()" class="flex items-center px-4 py-2">
+              <i class="fas fa-sign-out-alt mr-2 text-color hover:text-blue-500"></i>
+              <p class="text-color hover:text-blue-500">Log Out</p>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- Other content -->
+
+<!-- Logout Animation Overlay -->
+<div *ngIf="isLoggingOut" class="logout-overlay">
+  <ng-lottie [options]="lottieOptions" width="400px" height="400px"></ng-lottie>
+</div>
+

@@ -1,0 +1,245 @@
+
+<div class="wrapper">
+    <!-- Sidebar -->
+  <app-sidenav></app-sidenav>
+    <!-- End Sidebar -->
+  
+    <div class="main-panel">
+  <app-topnav></app-topnav>
+  
+      <div class="container">
+        <div class="page-inner">
+   
+  
+          <nz-page-header class="site-page-header" nzBackIcon>
+            <nz-page-header-title>Add Device</nz-page-header-title>
+            <!-- <nz-page-header-subtitle>This is a subtitle</nz-page-header-subtitle> -->
+             
+     
+     
+          </nz-page-header>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <nz-steps [nzCurrent]="current" nzSize="small">
+                  <nz-step nzTitle="Device Creation"></nz-step>
+                  <nz-step nzTitle="Device Configureation"></nz-step>
+                  <nz-step nzTitle="Status"></nz-step>
+                </nz-steps>
+              
+                <!-- Step 1 Content -->
+                <div *ngIf="current === 0">
+                  <form nz-form [nzLayout]="'vertical'" (ngSubmit)="onSubmit()" class="card">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-sm-4 col-md-4">
+                          <nz-form-item>
+                            <nz-form-label [nzFor]="'location_id'">Location</nz-form-label>
+                            <nz-form-control>
+                              <nz-select [(ngModel)]="formData.location_id" name="location_id" nzPlaceHolder="Select">
+                                <nz-option [nzValue]="0" nzLabel="--Select--"></nz-option>
+                                <nz-option *ngFor="let location of locations" [nzValue]="location.id" [nzLabel]="location.location_name"></nz-option>
+                              </nz-select>
+                            </nz-form-control>
+                          </nz-form-item>
+                        </div>
+                        <div class="col-sm-4 col-md-4">
+                          <nz-form-item>
+                            <nz-form-label [nzFor]="'gatewayName'">Gateway Name</nz-form-label>
+                            <nz-form-control>
+                              <input nz-input [(ngModel)]="formData.gatewayName" name="gatewayName" placeholder="Gateway Name" />
+                            </nz-form-control>
+                          </nz-form-item>
+                        </div>
+                        <div class="col-sm-4 col-md-4">
+                          <nz-form-item>
+                            <nz-form-label [nzFor]="'gateway_location'">Gateway Location</nz-form-label>
+                            <nz-form-control>
+                              <input nz-input [(ngModel)]="formData.gateway_location" name="gateway_location" placeholder="Gateway Location" />
+                            </nz-form-control>
+                          </nz-form-item>
+                        </div>
+                      </div>
+                      <table nz-table #basicTable  class="table table-bordered">
+                        <tbody>
+                          <tr *ngFor="let device of formData.devices; let i = index">
+                            <td>
+                              <nz-form-item>
+                                <nz-form-label [nzFor]="'sensorType' + i">Sensor Type</nz-form-label>
+                                <nz-form-control>
+                                  <nz-select [(ngModel)]="device.sensorId" name="sensorType{{i}}" (ngModelChange)="onSensorTypeChange($event, i)" nzPlaceHolder="Select Sensor Type">
+                                    <nz-option *ngFor="let sensorType of responseDataEb" [nzValue]="sensorType.sensorId" [nzLabel]="sensorType.sensor_type"></nz-option>
+                                  </nz-select>
+                                </nz-form-control>
+                              </nz-form-item>
+                            </td>
+                            <td>
+                              <nz-form-item>
+                                <nz-form-label [nzFor]="'deviceType' + i">Select Device Type</nz-form-label>
+                                <nz-form-control>
+                                  <nz-select [(ngModel)]="selectedDeviceId" (ngModelChange)="onDeviceChange($event)" name="deviceType{{i}}" nzPlaceHolder="Select Device Type">
+                                    <nz-option *ngFor="let deviceType of device.deviceData" [nzValue]="deviceType.deviceId" [nzLabel]="deviceType.device_type"></nz-option>
+                                  </nz-select>
+                                </nz-form-control>
+                              </nz-form-item>
+                            </td>
+                            <td>
+                              <nz-form-item>
+                                <nz-form-label [nzFor]="'deviceLocation' + i">Device Location</nz-form-label>
+                                <nz-form-control>
+                                  <input nz-input [(ngModel)]="device.deviceLocation" name="deviceLocation{{i}}" placeholder="Device Location" />
+                                </nz-form-control>
+                              </nz-form-item>
+                            </td>
+                            <td *ngIf="selectedDeviceId !== 4">
+                              <nz-form-item>
+                                <nz-form-label [nzFor]="'deviceCode' + i">Device Code</nz-form-label>
+                                <nz-form-control>
+                                  <input nz-input [(ngModel)]="device.deviceCode" name="deviceCode{{i}}" placeholder="Device Code" />
+                                </nz-form-control>
+                              </nz-form-item>
+                            </td>
+                            <td>
+                              <button nz-button nzType="default" nzDanger (click)="removeDevice(i)">Remove</button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <div class="d-flex justify-content-between align-items-center mt-3">
+                        <button nz-button nzType="primary" (click)="addDevices()">Add More</button>
+                        <button nz-button nzType="primary"  htmlType="submit">
+                          {{ showFormContainer ? 'Next' : 'Submit' }}
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              
+                <!-- Step 2 Content -->
+                <div *ngIf="current === 1">
+                  <form [formGroup]="form" (ngSubmit)="onSubmit()" nz-form [nzLayout]="'vertical'">
+                    <div class="card-body">
+                      <div class="row">
+                        <!-- Host Name -->
+                        <div class="col-sm-4 col-md-4">
+                          <nz-form-item>
+                            <nz-form-label nzFor="ip" nzRequired>Host Name</nz-form-label>
+                            <nz-form-control>
+                              <input nz-input placeholder="Host Name" formControlName="ip" />
+                            </nz-form-control>
+                          </nz-form-item>
+                          <label class="form-label me-2" for="checkboxAddDevice">Skip Ping</label>
+                          <input type="checkbox" id="checkboxAddDevice" formControlName="skipPing" class="custom-checkbox" />
+                        </div>
+                  
+                        <!-- Protocol Version -->
+                        <div class="col-sm-4 col-md-4">
+                          <nz-form-item>
+                            <nz-form-label nzFor="version" nzRequired>Protocol Version</nz-form-label>
+                            <nz-form-control>
+                              <nz-select formControlName="version" nzPlaceHolder="Select Version">
+                                <nz-option *ngFor="let v of ['1', '2', '2.3.1']" [nzValue]="v" [nzLabel]="v"></nz-option>
+                              </nz-select>
+                            </nz-form-control>
+                          </nz-form-item>
+                        </div>
+                  
+                        <!-- SNMP Community -->
+                        <div class="col-sm-4 col-md-4">
+                          <nz-form-item>
+                            <nz-form-label nzFor="community_string" nzRequired>SNMP Community</nz-form-label>
+                            <nz-form-control>
+                              <input nz-input placeholder="SNMP Community" formControlName="community_string" />
+                            </nz-form-control>
+                          </nz-form-item>
+                        </div>
+                  
+                        <!-- Transport -->
+                        <div class="col-sm-4 col-md-4">
+                          <nz-form-item>
+                            <nz-form-label nzFor="transport" nzRequired>Transport</nz-form-label>
+                            <nz-form-control>
+                              <nz-select formControlName="transport" nzPlaceHolder="Select Transport">
+                                <nz-option nzValue="udp" nzLabel="UDP"></nz-option>
+                                <nz-option nzValue="udp6" nzLabel="UDP6"></nz-option>
+                              </nz-select>
+                            </nz-form-control>
+                          </nz-form-item>
+                        </div>
+                  
+                        <!-- Port -->
+                        <div class="col-sm-4 col-md-4">
+                          <nz-form-item>
+                            <nz-form-label nzFor="port" nzRequired>Port</nz-form-label>
+                            <nz-form-control>
+                              <input nz-input type="number" placeholder="Port" formControlName="port" />
+                            </nz-form-control>
+                          </nz-form-item>
+                        </div>
+                  
+                        <!-- Battery Capacity -->
+                        <div class="col-sm-4 col-md-4">
+                          <nz-form-item>
+                            <nz-form-label nzFor="battery_capacity_ah">Battery Capacity</nz-form-label>
+                            <nz-form-control>
+                              <input nz-input placeholder="Battery Capacity" formControlName="battery_capacity_ah" />
+                            </nz-form-control>
+                          </nz-form-item>
+                        </div>
+                  
+                        <!-- Device Code -->
+                        <div class="col-sm-4 col-md-4">
+                          <nz-form-item>
+                            <nz-form-label nzFor="device_info_id">Device Code</nz-form-label>
+                            <nz-form-control>
+                              <input nz-input placeholder="Device Code" formControlName="device_info_id" />
+                            </nz-form-control>
+                          </nz-form-item>
+                        </div>
+                  
+                        <!-- Battery Name (Multiple Selection) -->
+                        <div class="col-sm-4 col-md-4">
+                          <nz-form-item>
+                            <nz-form-label nzFor="battery_id">Battery Name</nz-form-label>
+                            <nz-form-control>
+                              <nz-select formControlName="battery_id" nzMode="multiple" nzPlaceHolder="Select Batteries">
+                                <nz-option *ngFor="let battery of [1,2,3,4]" [nzValue]="battery" [nzLabel]="battery"></nz-option>
+                              </nz-select>
+                            </nz-form-control>
+                          </nz-form-item>
+                        </div>
+                  
+                        <!-- Submit Button -->
+                        <div class="col-sm-4 col-md-4 d-flex flex-column align-items-end justify-content-end">
+                          <button nz-button nzType="primary" type="submit" class="mt-2">Submit</button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                  
+                </div>
+              
+                <!-- Step 3 Content -->
+                <div *ngIf="current === 2">
+                  <p>Waiting for next step...</p>
+                </div>
+              
+                <!-- Step Navigation Buttons -->
+                <div class="steps-action mb-5">
+                  <button *ngIf="current > 0" nz-button nzType="default" (click)="prevStep()">Previous</button>
+                  <button *ngIf="current < 2" nz-button nzType="primary" (click)="nextStep()">Next</button>
+                  <button *ngIf="current === 2" nz-button nzType="primary">Done</button>
+                </div>
+              </div>
+              
+            </div>
+            <br />
+          </div>
+        </div>
+      </div>
+  
+  <app-footer></app-footer>
+    </div>
+  </div>
+  
+  

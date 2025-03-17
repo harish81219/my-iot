@@ -1,0 +1,15 @@
+<div class="map-container">
+    <div id="map"></div>
+  
+    <!-- Search & Coordinates Overlay -->
+    <div class="map-overlay">
+      <input type="text" [(ngModel)]="searchQuery" placeholder="Search location" class="search-input">
+      <button (click)="searchLocation()" class="search-button">🔍</button>
+  
+      <div class="coords">
+        <label>Lat: <input type="text" [(ngModel)]="latitude" readonly></label>
+        <label>Lng: <input type="text" [(ngModel)]="longitude" readonly></label>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,26 @@
+<!-- "F:\antd-iot\iot\src\assets\img\Animation - 1741329570838.json" -->
+
+
+<div class="chatbot-container" (click)="toggleChat()">
+    <ng-lottie [options]="options" width="120px" height="120px"></ng-lottie>
+  </div>
+  
+  <div class="chatbox" *ngIf="isChatOpen">
+    <div class="chat-header">
+      <h4>Chatbot</h4>
+      <button class="close-btn" (click)="toggleChat()">X</button>
+    </div>
+  
+    <!-- Chat Messages -->
+    <div class="chat-content">
+      <div *ngFor="let msg of messages" [ngClass]="{'user-message': msg.sender === 'user', 'bot-message': msg.sender === 'bot'}">
+        {{ msg.text }}
+      </div>
+    </div>
+  
+    <!-- Chat Input -->
+    <div class="chat-input">
+      <input type="text" [(ngModel)]="userMessage" placeholder="Ask me anything..." (keyup.enter)="sendMessage()" />
+      <button (click)="sendMessage()">Send</button>
+    </div>
+  </div>

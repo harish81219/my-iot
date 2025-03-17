@@ -1,1 +1,238 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~ng-zorro-antd/ng-zorro-antd.min.css"; 
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "~leaflet/dist/leaflet.css";
+
+
+
+
+/* styles.css or styles.scss */
+:root {
+    --background-color: #ffffff;
+    --text-color: #000000;
+  }
+  
+  .dark-mode {
+    background-color: #121212 !important;
+    color: #ffffff !important;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: all 0.3s ease-in-out;
+  }
+  
+
+  /* Apply dark mode to the entire body */
+.dark-mode {
+  background-color: #121212 !important;
+  color: #ffffff !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Apply styles to ALL divs inside dark mode */
+.dark-mode div {
+  background-color: #1e1e1e !important;
+  color: #ffffff !important;
+}
+
+/* Apply styles to specific elements */
+.dark-mode .topnav {
+  background-color: #222 !important;
+  border-bottom: 1px solid #444;
+}
+
+.dark-mode .card {
+  background-color: #2a2a2a !important;
+  box-shadow: 0px 2px 5px rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode button {
+  background-color: #333 !important;
+  color: #fff !important;
+  border: 1px solid #555;
+}
+:root {
+  --text-color: black;
+  --bg-color: white;
+}
+
+.dark-mode {
+  --text-color: white;
+  --bg-color: #121212;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+h1, h2, h3, h4, h5, h6, p, span, label, a, div {
+  color: var(--text-color);
+}
+
+
+
+/* DARK MODE STYLES */
+.dark-mode {
+  --text-color: white;
+  --bg-color: #121212;
+  --input-bg: #333;
+  --table-bg: #1e1e1e;
+  --border-color: #444;
+}
+
+/* 🟢 Apply text color to all elements */
+.dark-mode, 
+.dark-mode * {
+  color: var(--text-color) !important;
+}
+
+/* 🟢 Fix Backgrounds */
+.dark-mode body, 
+.dark-mode .ant-layout,
+.dark-mode .ant-card,
+.dark-mode .ant-table,
+.dark-mode .ant-modal-content {
+  background-color: var(--bg-color) !important;
+}
+
+/* 🟢 Fix Inputs, Select, and Date Picker */
+.dark-mode .ant-input,
+.dark-mode .ant-input-affix-wrapper,
+.dark-mode .ant-select-selector,
+.dark-mode .ant-picker {
+  background-color: var(--input-bg) !important;
+  color: var(--text-color) !important;
+  border-color: var(--border-color) !important;
+}
+
+/* Placeholder Text */
+.dark-mode .ant-input::placeholder,
+.dark-mode .ant-select-selection-placeholder,
+.dark-mode .ant-picker-input > input::placeholder {
+  color: #bbbbbb !important;
+}
+
+/* Dropdown Menus */
+.dark-mode .ant-dropdown-menu {
+  background-color: var(--table-bg) !important;
+  color: var(--text-color) !important;
+}
+
+.dark-mode .ant-dropdown-menu-item {
+  color: var(--text-color) !important;
+}
+
+.dark-mode .ant-dropdown-menu-item:hover {
+  background-color: #222 !important;
+}
+
+/* 🟢 Fix Tables */
+.dark-mode .ant-table-thead > tr > th,
+.dark-mode .ant-table-tbody > tr > td {
+  background-color: var(--table-bg) !important;
+  color: var(--text-color) !important;
+  border-color: var(--border-color) !important;
+}
+
+/* 🟢 Fix Buttons */
+.dark-mode .ant-btn {
+  background-color: var(--border-color) !important;
+  color: var(--text-color) !important;
+}
+
+/* 🟢 Fix Modals (Pop-ups) */
+.dark-mode .ant-modal-content {
+  background-color: var(--bg-color) !important;
+  color: var(--text-color) !important;
+}
+
+/* 🟢 Fix Checkbox & Radio */
+.dark-mode .ant-checkbox-wrapper span,
+.dark-mode .ant-radio-wrapper span {
+  color: var(--text-color) !important;
+}
+
+/* 🟢 Fix Ant Design Typography */
+.dark-mode .ant-typography {
+  color: var(--text-color) !important;
+}
+
+/* 🟢 Fix Ant Design Tabs */
+.dark-mode .ant-tabs-tab {
+  color: var(--text-color) !important;
+}
+
+/* 🟢 Fix Ant Design Tooltips */
+.dark-mode .ant-tooltip {
+  background-color: var(--border-color) !important;
+}
+
+.dark-mode .ant-tooltip-inner {
+  color: var(--text-color) !important;
+}
+/* Fix Ant Design Tags */
+.dark-mode .ant-tag {
+  background-color: #333 !important; /* Dark background */
+  color: white !important; /* White text */
+  border-color: #555 !important; /* Border color */
+}
+
+/* Fix Ant Design Tags when closable */
+.dark-mode .ant-tag-close-icon {
+  color: white !important;
+}
+
+/* Hover effect for tags */
+.dark-mode .ant-tag:hover {
+  background-color: #444 !important;
+  border-color: #666 !important;
+}
+/* Dark Mode - Fix Invisible Elements */
+.dark-mode .ant-select-selector,
+.dark-mode .ant-input,
+.dark-mode .ant-input-number,
+.dark-mode .ant-picker,
+.dark-mode .ant-btn {
+  background-color: #333 !important;  /* Dark background */
+  color: white !important;            /* White text */
+  border-color: #555 !important;      /* Visible border */
+}
+
+/* Placeholder text visibility */
+.dark-mode .ant-input::placeholder,
+.dark-mode .ant-select-selection-placeholder,
+.dark-mode .ant-picker-input > input::placeholder {
+  color: #bbb !important;  /* Light gray text for placeholders */
+}
+
+/* Dropdown fix */
+.dark-mode .ant-select-dropdown {
+  background-color: #222 !important;
+  color: white !important;
+}
+
+/* Fix selected dropdown item visibility */
+.dark-mode .ant-select-item-option-selected {
+  background-color: #444 !important;
+  color: white !important;
+}
+
+/* Checkbox and Radio button fixes */
+.dark-mode .ant-checkbox-wrapper,
+.dark-mode .ant-radio-wrapper {
+  color: white !important;
+}
+
+/* Table headers and cells */
+.dark-mode .ant-table-thead > tr > th,
+.dark-mode .ant-table-tbody > tr > td {
+  background-color: #222 !important;
+  color: white !important;
+  border-color: #555 !important;
+}

@@ -1,0 +1,29 @@
+/* Container to hold all items and ensure they wrap to the next row */
+.flex-wrap {
+    display: flex;
+    flex-wrap: wrap;  /* Allow the items to wrap to the next line */
+    gap: 1rem;  /* Adjust space between items */
+  }
+  
+  .flex-1 {
+    flex: 1 1 45%;  /* Take up 45% width, ensuring two items per row */
+    min-width: 45%;  /* Prevent it from shrinking below 45% */
+  }
+  
+  .nz-select, .nz-date-picker {
+    width: 100%; 
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  
+  .nz-modal-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+  }
+
+  
+  

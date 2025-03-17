@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5 Page with Side Navigation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900 flex">
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-blue-600 text-white h-screen p-5 fixed">
+        <h2 class="text-2xl font-bold mb-6">My Website</h2>
+        <nav class="space-y-4">
+            <a href="#" class="block py-2 px-3 rounded-lg hover:bg-blue-500">Home</a>
+            <a href="#" class="block py-2 px-3 rounded-lg hover:bg-blue-500">About</a>
+            <a href="#" class="block py-2 px-3 rounded-lg hover:bg-blue-500">Contact</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="ml-64 p-6 flex-1">
+        <header class="bg-white p-4 shadow-lg rounded-lg">
+            <h1 class="text-2xl font-bold">Welcome to My HTML5 Page</h1>
+        </header>
+
+        <section class="mt-6 bg-white p-6 shadow-lg rounded-lg">
+            <h2 class="text-xl font-semibold">About HTML5</h2>
+            <p class="mt-2">HTML5 is the latest version of HTML, offering better structure, multimedia support, and mobile-friendly features.</p>
+
+            <!-- Video -->
+            <h3 class="text-lg font-semibold mt-4">Video Example:</h3>
+            <video width="100%" class="rounded-lg mt-2" controls>
+                <source src="sample.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+
+            <!-- Audio -->
+            <h3 class="text-lg font-semibold mt-4">Audio Example:</h3>
+            <audio class="mt-2 w-full" controls>
+                <source src="sample.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </section>
+
+        <!-- Contact Form -->
+        <section class="mt-6 bg-white p-6 shadow-lg rounded-lg">
+            <h2 class="text-xl font-semibold mb-4">Contact Us</h2>
+            <form class="space-y-4">
+                <div>
+                    <label class="block font-medium mb-1">Full Name</label>
+                    <input type="text" class="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your name">
+                </div>
+
+                <div>
+                    <label class="block font-medium mb-1">Email Address</label>
+                    <input type="email" class="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your email">
+                </div>
+
+                <div>
+                    <label class="block font-medium mb-1">Phone Number</label>
+                    <input type="tel" class="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your phone number">
+                </div>
+
+                <div>
+                    <label class="block font-medium mb-1">Message</label>
+                    <textarea class="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" rows="4" placeholder="Enter your message"></textarea>
+                </div>
+
+                <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Submit</button>
+            </form>
+        </section>
+    </main>
+
+</body>
+</html>

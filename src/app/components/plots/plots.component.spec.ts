@@ -1,0 +1,21 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { PlotsComponent } from './plots.component';
+
+describe('PlotsComponent', () => {
+  let component: PlotsComponent;
+  let fixture: ComponentFixture<PlotsComponent>;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [PlotsComponent]
+    });
+    fixture = TestBed.createComponent(PlotsComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

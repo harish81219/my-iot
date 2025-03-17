@@ -1,0 +1,121 @@
+.rate-us-container {
+    width: 700px;
+    height:200px;
+    margin: 50px auto;
+    text-align: center;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .stars {
+    font-size: 30px;
+    color: #ffc107;
+    cursor: pointer;
+    margin-bottom: 15px;
+  }
+  
+  textarea {
+    width: 100%;
+    height: 80px;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+  }
+  
+  button {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background: #0056b3;
+  }
+  
+/* Styling for the Rate Us Container */
+.rate-us-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* min-height: 100vh; */
+    background: #f8f9fa;
+  }
+  
+  /* Styling for the Card */
+  .rate-card {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 2px solid #ddd;
+    text-align: center;
+  }
+  
+  /* Title Styling */
+  h2 {
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  /* Rating Section */
+  .rating-section {
+    padding: 15px 0;
+  }
+  
+  /* Feedback Text */
+  .feedback-text {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #666;
+  }
+  
+  /* Stars Customization */
+  .stars {
+    margin: 10px 0;
+  }
+  
+  .stars span {
+    cursor: pointer;
+    font-size: 24px;
+    margin: 5px;
+  }
+  
+  .stars .checked {
+    color: gold;
+  }
+  
+  /* Textarea Styling */
+  textarea {
+    width: 100%;
+    height: 80px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 14px;
+    resize: none;
+    margin-bottom: 15px;
+  }
+  
+  /* Submit Button */
+  .submit-btn {
+    background: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+  }
+  
+  .submit-btn:hover {
+    background: #0056b3;
+  }
+  

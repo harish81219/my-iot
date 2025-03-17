@@ -16,16 +16,25 @@
             "outputPath": "dist/iot",
             "index": "src/index.html",
             "main": "src/main.ts",
+            "aot": false,
             "polyfills": [
               "zone.js"
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
+                "output": "/assets/"
+              }
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/leaflet/dist/leaflet.css",
+              "node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
+              "src/theme.less"
             ],
             "scripts": []
           },
@@ -87,12 +96,16 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/ng-zorro-antd/ng-zorro-antd.min.css"
             ],
             "scripts": []
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "80c0a09e-cce1-44e3-9e31-9c27cfebba7c"
   }
 }

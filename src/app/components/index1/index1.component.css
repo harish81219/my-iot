@@ -1,0 +1,16 @@
+.ticket-height{
+    height: 120px;
+}
+
+.card-stats {
+    cursor: grab;
+  }
+  
+  [cdkDrag] {
+    margin-bottom: 15px;
+  }
+  
+  [cdkDrag]:active {
+    cursor: grabbing;
+  }
+  

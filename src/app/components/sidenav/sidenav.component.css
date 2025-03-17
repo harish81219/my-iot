@@ -1,0 +1,97 @@
+/* Sidebar hover effect */
+.sidebar .nav-item {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .sidebar .nav-item {
+    transition: background 0.3s ease, transform 0.3s ease, color 0.3s ease;
+  }
+  
+  .sidebar .nav-item:hover {
+    background: linear-gradient(45deg, #ff7e5f, #feb47b); 
+    transform: scale(1.05);
+    color: white; 
+  }
+  
+  .sidebar .nav-item:hover * { 
+    color: white !important; 
+  }
+  
+  /* Icon styling */
+  .icon {
+    margin-right: 10px;
+    transition: transform 0.3s ease;
+  }
+  
+  /* Hover effect for icons */
+  .sidebar .nav-item:hover .icon {
+    transform: rotate(360deg);
+  }
+  
+  .nav-item a {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-item a:hover {
+    color: #007bff; /* Change text color on hover */
+  }
+  
+  /* Sub-item padding */
+  .sub-item {
+    padding-left: 20px;
+  }
+  
+  /* Sidebar wrapper */
+  .sidebar-wrapper {
+    height: 100vh;
+    overflow: auto;
+  }
+  
+  /* Sidebar content padding */
+  .sidebar-content {
+    padding-top: 20px;
+  }
+  
+  /* Caret rotation */
+  .nav-item .caret {
+    margin-left: auto;
+    font-size: 12px;
+    transition: transform 0.3s ease;
+  }
+  
+  .nav-item .collapsed .caret {
+    transform: rotate(180deg); /* Rotating caret when collapsed */
+  }
+
+  .text-color{
+    color: #fff;
+  }
+  
+  .active-tab {
+  /* background-color: orange !important; */
+  background: linear-gradient(45deg, #ff7e5f, #feb47b) !important; 
+
+  color: white !important;
+}
+
+.active-tab i,
+.active-tab p {
+  color: white !important;
+}
+
+.logout-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+

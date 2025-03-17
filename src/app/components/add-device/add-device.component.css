@@ -1,0 +1,66 @@
+/* Container to hold all items and ensure they wrap to the next row */
+.flex-wrap {
+    display: flex;
+    flex-wrap: wrap;  /* Allow the items to wrap to the next line */
+    gap: 1rem;  /* Adjust space between items */
+  }
+  
+  .flex-1 {
+    flex: 1 1 45%;  /* Take up 45% width, ensuring two items per row */
+    min-width: 45%;  /* Prevent it from shrinking below 45% */
+  }
+  
+  .nz-select, .nz-date-picker {
+    width: 100%; 
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  
+  .nz-modal-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+  }
+
+
+  .steps-content {
+    margin-top: 16px;
+    border: 1px dashed #e9e9e9;
+    border-radius: 6px;
+    background-color: #fafafa;
+    min-height: 200px;
+    text-align: center;
+    padding-top: 80px;
+  }
+
+  .steps-action {
+    margin-top: 24px;
+  }
+
+  button {
+    margin-right: 8px;
+  }
+
+
+  .steps-container {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-top: 10px !important;
+  }
+  
+  nz-steps {
+    width: 80%; /* Adjust width */
+  }
+
+
+
+  
+  
+  
+  

@@ -1,0 +1,49 @@
+@keyframes gradientBackground {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes glow {
+  0%, 100% { text-shadow: 0px 0px 15px rgba(255, 0, 255, 0.7); }
+  50% { text-shadow: 0px 0px 25px rgba(255, 0, 255, 1); }
+}
+
+@keyframes particles {
+  0% { background: radial-gradient(circle, rgba(255,255,255,0.1) 10%, transparent 60%) repeat; }
+  50% { background: radial-gradient(circle, rgba(255,255,255,0.05) 10%, transparent 60%) repeat; }
+  100% { background: radial-gradient(circle, rgba(255,255,255,0.1) 10%, transparent 60%) repeat; }
+}
+
+/* Apply animations */
+.animate-gradientBackground {
+  background-size: 300% 300%;
+  animation: gradientBackground 10s infinite linear;
+}
+
+.animate-float {
+  animation: float 4s infinite ease-in-out;
+}
+
+.animate-glow {
+  animation: glow 1.5s infinite ease-in-out;
+}
+
+.animate-particles {
+  animation: particles 5s infinite linear;
+}
+
+/* Input & Button Effects */
+.hover\:shadow-inputNeon:hover {
+  box-shadow: 0px 0px 20px rgba(42, 201, 223, 0.7);
+}
+
+.hover\:shadow-buttonNeon:hover {
+  box-shadow: 0px 0px 30px rgba(255, 0, 255, 0.8);
+}

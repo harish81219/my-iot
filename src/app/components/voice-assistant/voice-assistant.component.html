@@ -1,0 +1,26 @@
+<div class="assistant-container">
+    <h2>🎙 Voice Assistant</h2>
+    
+    <button (click)="startListening()" [disabled]="isListening">
+      🎤 {{ isListening ? 'Listening...' : 'Start Speaking' }}
+    </button>
+  
+    <p><strong>You Said:</strong> {{ userText }}</p>
+    <p><strong>Assistant:</strong> {{ responseText }}</p>
+  </div>
+  
+
+
+
+  <div>
+    <apx-chart 
+      [series]="chartOptions.series" 
+      [chart]="chartOptions.chart" 
+      [dataLabels]="chartOptions.dataLabels" 
+      [colors]="chartOptions.colors" 
+      [xaxis]="chartOptions.xaxis" 
+      [title]="chartOptions.title"
+      [grid]="chartOptions.grid">
+    </apx-chart>
+  </div>
+  

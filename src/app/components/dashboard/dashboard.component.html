@@ -1,0 +1,463 @@
+
+<div class="wrapper">
+    <!-- Sidebar -->
+<app-sidenav></app-sidenav>
+    <!-- End Sidebar -->
+
+    <div class="main-panel">
+<app-topnav></app-topnav>
+
+      <div class="container">
+        <div class="page-inner">
+          <!-- <div class="page-header">
+            <h3 class="fw-bold mb-3">Reports</h3>
+            <ul class="breadcrumbs mb-3">
+              <li class="nav-home">
+                <a href="#">
+                  <i class="icon-home"></i>
+                </a>
+              </li>
+              <li class="separator">
+                <i class="icon-arrow-right"></i>
+              </li>
+              <li class="nav-item">
+                <a href="#">Tables</a>
+              </li>
+         
+            </ul>
+          </div> -->
+
+          <nz-page-header class="site-page-header" nzBackIcon>
+            <nz-page-header-title>Reports</nz-page-header-title>
+            <!-- <nz-page-header-subtitle>This is a subtitle</nz-page-header-subtitle> -->
+             
+            <nz-page-header-extra>
+              <nz-space>
+                <!-- <button *nzSpaceItem nz-button>Operation</button> -->
+                <button *nzSpaceItem nz-button>Download</button>
+                <button nz-button nz-button nzType="primary" (click)="showModal1()"> Filters</button>
+               
+              </nz-space>
+            </nz-page-header-extra>
+     
+          </nz-page-header>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+        
+                <nz-table #sortTable [nzData]="listOfData" nzTableLayout="fixed">
+                  <thead>
+                    <tr>
+                      <th *ngFor="let column of listOfColumn" [nzSortFn]="column.compare" [nzSortPriority]="column.priority">
+                        {{ column.title }}
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let data of sortTable.data">
+                      <td>
+                        <nz-tag [nzColor]="'green'">{{ data.name }}</nz-tag>
+                      </td>
+                      <td>{{ data.chinese }}</td>
+                      <td>{{ data.math }}</td>
+                      <td>{{ data.english }}</td>
+                    </tr>
+                  </tbody>
+                </nz-table>
+                
+
+             
+              </div>
+            </div>
+
+
+
+
+       
+            <br />
+        
+            <!-- <button nz-button nzType="primary" (click)="showModal2()">
+              <span>In Component</span>
+            </button> -->
+            <nz-modal [(nzVisible)]="isVisible" nzTitle="Select Filters" (nzOnCancel)="handleCancel()" [nzWidth]="'35%'">
+              <div *nzModalContent>
+                <div class="space-y-4">
+            
+                  <!-- Row for First and Second Multi-Select Dropdowns -->
+                  <div class="flex-wrap  ">
+                    <!-- First Multi-Select Dropdown -->
+                    <div class="flex-1">
+                      <label class="text-gray-600 font-semibold">Select Location</label>
+                      <nz-select
+                      [nzMaxTagCount]="3"
+                      [nzMaxTagPlaceholder]="tagPlaceHolder"
+                      nzMode="multiple"
+                      nzPlaceHolder="Please select"
+                      [(ngModel)]="listOfSelectedValue1"
+                      [style.width]="'200px'" 
+                      class="w-full"
+                    >
+                    
+                        <nz-option *ngFor="let item of listOfOption1" [nzLabel]="item" [nzValue]="item"></nz-option>
+                      </nz-select>
+                      <ng-template #tagPlaceHolder let-selectedList="selectedList">
+                        and {{ selectedList.length }} more selected
+                      </ng-template>
+                    </div>
+            
+                    <!-- Second Multi-Select Dropdown -->
+                    <div class="flex-1  ">
+                      <label class="text-gray-600 font-semibold">Select Device</label>
+                      <nz-select
+                      [nzMaxTagCount]="3"
+                      [nzMaxTagPlaceholder]="tagPlaceHolder"
+                      nzMode="multiple"
+                      nzPlaceHolder="Please select"
+                      [(ngModel)]="listOfSelectedValue1"
+                      [style.width]="'200px'" 
+                      class="w-full"
+                    >
+                        <nz-option *ngFor="let item of listOfOption2" [nzLabel]="item" [nzValue]="item"></nz-option>
+                      </nz-select>
+                    </div>
+                  </div>
+            
+                  <div class="flex-wrap mt-4">
+                    <div class="flex-1">
+                      <label class="text-gray-600 font-semibold">From Date</label>
+                      <nz-date-picker
+                        [(ngModel)]="dateRange[0]"
+                        nzMode="date"
+                        class="w-full"
+                        [nzFormat]="'YYYY-MM-DD'"
+                        [style.width]="'200px'" 
+                      ></nz-date-picker>
+                    </div>
+            
+                    <div class="flex-1 mt-2">
+                      <label class="text-gray-600 font-semibold">To Date</label>
+                      <nz-date-picker
+                        [(ngModel)]="dateRange[1]"
+                        nzMode="date"
+                        class="w-full"
+                        [nzFormat]="'YYYY-MM-DD'"
+                        [style.width]="'200px'" 
+                      ></nz-date-picker>
+                    </div>
+                  </div>
+            
+                  <!-- Row for Streams Dropdown -->
+                  <div class="flex-wrap mt-3">
+                    <div class="flex-1">
+                      <label class="text-gray-600 font-semibold">Select Stream</label>
+                      <nz-select
+                        nzPlaceHolder="Please select"
+                        [(ngModel)]="selectedStream"
+                        class="w-full"
+                        [style.width]="'200px'" 
+                      >
+                        <nz-option *ngFor="let stream of listOfStreams" [nzLabel]="stream" [nzValue]="stream"></nz-option>
+                      </nz-select>
+                    </div>
+                  </div>
+            
+                </div>
+              </div>
+            
+              <div *nzModalFooter>
+              
+                <button nz-button nzType="default" (click)="handleCancel()" class="transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-gray-200">Cancel</button>
+                <button nz-button nzType="primary" (click)="handleOk()" [nzLoading]="isConfirmLoading" class="transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-blue-600">Submit</button>
+              </div>
+            </nz-modal>
+            
+            
+
+            
+            
+
+        
+
+        
+          </div>
+               <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+
+                <span>Major</span>
+        
+                <nz-table #sortTable [nzData]="listOfData" nzTableLayout="fixed">
+                  <thead>
+                    <tr>
+                      <th *ngFor="let column of listOfColumn" [nzSortFn]="column.compare" [nzSortPriority]="column.priority">
+                        {{ column.title }}
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let data of sortTable.data">
+                      <td>
+                        <nz-tag [nzColor]="'green'">{{ data.name }}</nz-tag>
+                      </td>
+                      <td>{{ data.chinese }}</td>
+                      <td>{{ data.math }}</td>
+                      <td>{{ data.english }}</td>
+                    </tr>
+                  </tbody>
+                </nz-table>
+                
+
+             
+              </div>
+            </div>
+
+
+
+
+       
+            <br />
+        
+            <!-- <button nz-button nzType="primary" (click)="showModal2()">
+              <span>In Component</span>
+            </button> -->
+            <nz-modal [(nzVisible)]="isVisible" nzTitle="Select Filters" (nzOnCancel)="handleCancel()" [nzWidth]="'35%'">
+              <div *nzModalContent>
+                <div class="space-y-4">
+            
+                  <!-- Row for First and Second Multi-Select Dropdowns -->
+                  <div class="flex-wrap  ">
+                    <!-- First Multi-Select Dropdown -->
+                    <div class="flex-1">
+                      <label class="text-gray-600 font-semibold">Select Location</label>
+                      <nz-select
+                      [nzMaxTagCount]="3"
+                      [nzMaxTagPlaceholder]="tagPlaceHolder"
+                      nzMode="multiple"
+                      nzPlaceHolder="Please select"
+                      [(ngModel)]="listOfSelectedValue1"
+                      [style.width]="'200px'" 
+                      class="w-full"
+                    >
+                    
+                        <nz-option *ngFor="let item of listOfOption1" [nzLabel]="item" [nzValue]="item"></nz-option>
+                      </nz-select>
+                      <ng-template #tagPlaceHolder let-selectedList="selectedList">
+                        and {{ selectedList.length }} more selected
+                      </ng-template>
+                    </div>
+            
+                    <!-- Second Multi-Select Dropdown -->
+                    <div class="flex-1  ">
+                      <label class="text-gray-600 font-semibold">Select Device</label>
+                      <nz-select
+                      [nzMaxTagCount]="3"
+                      [nzMaxTagPlaceholder]="tagPlaceHolder"
+                      nzMode="multiple"
+                      nzPlaceHolder="Please select"
+                      [(ngModel)]="listOfSelectedValue1"
+                      [style.width]="'200px'" 
+                      class="w-full"
+                    >
+                        <nz-option *ngFor="let item of listOfOption2" [nzLabel]="item" [nzValue]="item"></nz-option>
+                      </nz-select>
+                    </div>
+                  </div>
+            
+                  <div class="flex-wrap mt-4">
+                    <div class="flex-1">
+                      <label class="text-gray-600 font-semibold">From Date</label>
+                      <nz-date-picker
+                        [(ngModel)]="dateRange[0]"
+                        nzMode="date"
+                        class="w-full"
+                        [nzFormat]="'YYYY-MM-DD'"
+                        [style.width]="'200px'" 
+                      ></nz-date-picker>
+                    </div>
+            
+                    <div class="flex-1 mt-2">
+                      <label class="text-gray-600 font-semibold">To Date</label>
+                      <nz-date-picker
+                        [(ngModel)]="dateRange[1]"
+                        nzMode="date"
+                        class="w-full"
+                        [nzFormat]="'YYYY-MM-DD'"
+                        [style.width]="'200px'" 
+                      ></nz-date-picker>
+                    </div>
+                  </div>
+            
+                  <!-- Row for Streams Dropdown -->
+                  <div class="flex-wrap mt-3">
+                    <div class="flex-1">
+                      <label class="text-gray-600 font-semibold">Select Stream</label>
+                      <nz-select
+                        nzPlaceHolder="Please select"
+                        [(ngModel)]="selectedStream"
+                        class="w-full"
+                        [style.width]="'200px'" 
+                      >
+                        <nz-option *ngFor="let stream of listOfStreams" [nzLabel]="stream" [nzValue]="stream"></nz-option>
+                      </nz-select>
+                    </div>
+                  </div>
+            
+                </div>
+              </div>
+            
+              <div *nzModalFooter>
+              
+                <button nz-button nzType="default" (click)="handleCancel()" class="transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-gray-200">Cancel</button>
+                <button nz-button nzType="primary" (click)="handleOk()" [nzLoading]="isConfirmLoading" class="transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-blue-600">Submit</button>
+              </div>
+            </nz-modal>
+
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+
+                <span>Major</span>
+        
+                <nz-table #sortTable [nzData]="actorsData" nzTableLayout="fixed">
+                  <thead>
+                    <tr>
+                      <th *ngFor="let column of listOfColumn" [nzSortFn]="column.compare" [nzSortPriority]="column.priority">
+                        {{ column.title }}
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let data of actorsData">
+                      <td><nz-tag [nzColor]="'green'">{{ data.actor_id }}</nz-tag></td>
+                      <td>{{ data.first_name }}</td>
+                      <td>{{ data.last_name }}</td>
+                      <td>{{ data.last_name }}</td> <!-- Fixed last_name typo -->
+                    </tr>
+                  </tbody>
+                </nz-table>
+
+
+                <ng-lottie [options]="options" width="200px" height="200px"></ng-lottie>
+              
+
+                
+                
+
+             
+              </div>
+            </div>
+
+
+
+
+       
+            <br />
+        
+            <!-- <button nz-button nzType="primary" (click)="showModal2()">
+              <span>In Component</span>
+            </button> -->
+            <nz-modal [(nzVisible)]="isVisible" nzTitle="Select Filters" (nzOnCancel)="handleCancel()" [nzWidth]="'35%'">
+              <div *nzModalContent>
+                <div class="space-y-4">
+            
+                  <!-- Row for First and Second Multi-Select Dropdowns -->
+                  <div class="flex-wrap  ">
+                    <!-- First Multi-Select Dropdown -->
+                    <div class="flex-1">
+                      <label class="text-gray-600 font-semibold">Select Location</label>
+                      <nz-select
+                      [nzMaxTagCount]="3"
+                      [nzMaxTagPlaceholder]="tagPlaceHolder"
+                      nzMode="multiple"
+                      nzPlaceHolder="Please select"
+                      [(ngModel)]="listOfSelectedValue1"
+                      [style.width]="'200px'" 
+                      class="w-full"
+                    >
+                    
+                        <nz-option *ngFor="let item of listOfOption1" [nzLabel]="item" [nzValue]="item"></nz-option>
+                      </nz-select>
+                      <ng-template #tagPlaceHolder let-selectedList="selectedList">
+                        and {{ selectedList.length }} more selected
+                      </ng-template>
+                    </div>
+            
+                    <!-- Second Multi-Select Dropdown -->
+                    <div class="flex-1  ">
+                      <label class="text-gray-600 font-semibold">Select Device</label>
+                      <nz-select
+                      [nzMaxTagCount]="3"
+                      [nzMaxTagPlaceholder]="tagPlaceHolder"
+                      nzMode="multiple"
+                      nzPlaceHolder="Please select"
+                      [(ngModel)]="listOfSelectedValue1"
+                      [style.width]="'200px'" 
+                      class="w-full"
+                    >
+                        <nz-option *ngFor="let item of listOfOption2" [nzLabel]="item" [nzValue]="item"></nz-option>
+                      </nz-select>
+                    </div>
+                  </div>
+            
+                  <div class="flex-wrap mt-4">
+                    <div class="flex-1">
+                      <label class="text-gray-600 font-semibold">From Date</label>
+                      <nz-date-picker
+                        [(ngModel)]="dateRange[0]"
+                        nzMode="date"
+                        class="w-full"
+                        [nzFormat]="'YYYY-MM-DD'"
+                        [style.width]="'200px'" 
+                      ></nz-date-picker>
+                    </div>
+            
+                    <div class="flex-1 mt-2">
+                      <label class="text-gray-600 font-semibold">To Date</label>
+                      <nz-date-picker
+                        [(ngModel)]="dateRange[1]"
+                        nzMode="date"
+                        class="w-full"
+                        [nzFormat]="'YYYY-MM-DD'"
+                        [style.width]="'200px'" 
+                      ></nz-date-picker>
+                    </div>
+                  </div>
+            
+                  <!-- Row for Streams Dropdown -->
+                  <div class="flex-wrap mt-3">
+                    <div class="flex-1">
+                      <label class="text-gray-600 font-semibold">Select Stream</label>
+                      <nz-select
+                        nzPlaceHolder="Please select"
+                        [(ngModel)]="selectedStream"
+                        class="w-full"
+                        [style.width]="'200px'" 
+                      >
+                        <nz-option *ngFor="let stream of listOfStreams" [nzLabel]="stream" [nzValue]="stream"></nz-option>
+                      </nz-select>
+                    </div>
+                  </div>
+            
+                </div>
+              </div>
+            
+              <div *nzModalFooter>
+              
+                <button nz-button nzType="default" (click)="handleCancel()" class="transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-gray-200">Cancel</button>
+                <button nz-button nzType="primary" (click)="handleOk()" [nzLoading]="isConfirmLoading" class="transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-blue-600">Submit</button>
+              </div>
+            </nz-modal>
+
+          </div>
+        </div>
+      </div>
+
+  <app-footer></app-footer>
+    </div>
+
+ 
+    <!-- End Custom template -->
+  </div>
+  <!--   Core JS Files   -->
+

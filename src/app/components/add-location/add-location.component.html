@@ -1,0 +1,227 @@
+
+<div class="wrapper">
+    <!-- Sidebar -->
+<app-sidenav></app-sidenav>
+    <!-- End Sidebar -->
+
+    <div class="main-panel">
+<app-topnav></app-topnav>
+
+      <div class="container">
+        <div class="page-inner">
+          <!-- <div class="page-header">
+            <h3 class="fw-bold mb-3">Reports</h3>
+            <ul class="breadcrumbs mb-3">
+              <li class="nav-home">
+                <a href="#">
+                  <i class="icon-home"></i>
+                </a>
+              </li>
+              <li class="separator">
+                <i class="icon-arrow-right"></i>
+              </li>
+              <li class="nav-item">
+                <a href="#">Tables</a>
+              </li>
+         
+            </ul>
+          </div> -->
+
+          <nz-page-header class="site-page-header" nzBackIcon>
+            <nz-page-header-title>Locations</nz-page-header-title>
+            <!-- <nz-page-header-subtitle>This is a subtitle</nz-page-header-subtitle> -->
+             
+            <nz-page-header-extra>
+              <nz-space>
+                <!-- <button *nzSpaceItem nz-button>Operation</button> -->
+                <button *nzSpaceItem nz-button>Download</button>
+                <button nz-button nz-button nzType="primary" (click)="showModal1()"> Filters</button>
+               
+              </nz-space>
+            </nz-page-header-extra>
+     
+          </nz-page-header>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+        
+                <nz-table #sortTable [nzData]="listOfData" nzTableLayout="fixed">
+                  <thead>
+                    <tr>
+                      <th *ngFor="let column of listOfColumn" [nzSortFn]="column.compare" [nzSortPriority]="column.priority">
+                        {{ column.title }}
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let data of locationList">
+                      <td>
+                        <nz-tag [nzColor]="'green'">{{ data.STATE_NAME }}</nz-tag>
+                      </td>
+                      <td>{{ data.cities }}</td>
+                      <td>{{ data.LOCATION_NAME }}</td>
+                      <td>{{ data.ADDRESS }}</td>
+                      <td>{{ data.LATITUDE }}</td>
+                      <td>{{ data.LONGITUDE }}</td>
+                      <td>{{ data.REMARKS }}</td>
+                      <td>{{ data.TIME_STAMP }}</td>
+                      <td>
+                        <button nz-button nzType="primary" nzSize="small" nz-tooltip nzTooltipTitle="Are you sure you want to edit?" (click)="showModal2()">
+                          <i nz-icon nzType="edit"></i> 
+                        </button>
+
+                        
+                        
+                        
+                        <button nz-button nzType="default" nzSize="small" (click)="deleteLocation(data.LOCATION_ID)">
+                          <i nz-icon nzType="delete"></i> 
+                        </button>
+                        
+                    </tr>
+                  </tbody>
+                </nz-table>
+                
+
+             
+              </div>
+            </div>
+
+
+
+
+       
+            <br />
+        
+            <!-- <button nz-button nzType="primary" (click)="showModal2()">
+              <span>In Component</span>
+            </button> -->
+            <nz-modal [(nzVisible)]="isVisible"  (nzOnCancel)="handleCancel()" [nzWidth]="'35%'">
+              <div *nzModalContent>
+                <form nz-form [formGroup]="locationForm" class="card" (ngSubmit)="onSubmit()">
+                    <div class="card-header pb-0">
+                      <div class="card-options">
+                        <a class="card-options-collapse" href="#" data-bs-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
+                        <a class="card-options-remove" href="#" data-bs-toggle="card-remove"><i class="fe fe-x"></i></a>
+                      </div>
+                    </div>
+                  
+                    <div class="card-body">
+                      <div class="row">
+                        <!-- Search States -->
+                        <div class="col-md-4 mb-3">
+                          <nz-form-item>
+                            <nz-form-label [nzSpan]="24">Search States</nz-form-label>
+                            <nz-form-control [nzErrorTip]="'State is required.'" [nzValidateStatus]="locationForm.controls['state']">
+                              <!-- <nz-select formControlName="STATE_NAME" nzPlaceHolder="Select a state">
+                                <nz-option *ngFor="let state of filteredStates" [nzValue]="state.sub_cat_id" [nzLabel]="state.sub_cat_name"></nz-option>
+                              </nz-select> -->
+                              <input nz-input formControlName="STATE_NAME" placeholder="City">
+                            </nz-form-control>
+                          </nz-form-item>
+                        </div>
+                  
+                        <!-- City -->
+                        <div class="col-md-4 mb-3">
+                          <nz-form-item>
+                            <nz-form-label [nzSpan]="24">City <span class="text-danger">*</span></nz-form-label>
+                            <nz-form-control [nzErrorTip]="'City is required.'" [nzValidateStatus]="locationForm.controls['city']">
+                              <input nz-input formControlName="CITY" placeholder="City">
+                            </nz-form-control>
+                          </nz-form-item>
+                        </div>
+                  
+                        <!-- Location Name -->
+                        <div class="col-md-4 mb-3">
+                          <nz-form-item>
+                            <nz-form-label [nzSpan]="24">Location Name <span class="text-danger">*</span></nz-form-label>
+                            <nz-form-control [nzErrorTip]="'Location is required.'" [nzValidateStatus]="locationForm.controls['location_name']">
+                              <input nz-input formControlName="LOCATION_NAME" placeholder="Location">
+                            </nz-form-control>
+                          </nz-form-item>
+                        </div>
+                  
+                        <!-- Address -->
+                        <div class="col-12 mb-3">
+                          <nz-form-item>
+                            <nz-form-label [nzSpan]="24">Address <span class="text-danger">*</span></nz-form-label>
+                            <nz-form-control [nzErrorTip]="'Address is required.'" [nzValidateStatus]="locationForm.controls['address']">
+                              <textarea nz-input formControlName="ADDRESS" placeholder="Enter Address"></textarea>
+                            </nz-form-control>
+                          </nz-form-item>
+                        </div>
+                  
+                        <!-- Location Code -->
+                        <div class="col-md-4 mb-3">
+                          <nz-form-item>
+                            <nz-form-label [nzSpan]="24">Location Code <span class="text-danger">*</span></nz-form-label>
+                            <nz-form-control [nzErrorTip]="'Location Code is required.'" [nzValidateStatus]="locationForm.controls['location_code']">
+                              <input nz-input formControlName="LOCATION_CODE" placeholder="Location Code">
+                            </nz-form-control>
+                          </nz-form-item>
+                        </div>
+                  
+                        <!-- Latitude -->
+                        <div class="col-md-4 mb-3">
+                          <nz-form-item>
+                            <nz-form-label [nzSpan]="24">Latitude</nz-form-label>
+                            <nz-form-control>
+                              <input nz-input formControlName="LATITUDE" placeholder="Latitude">
+                            </nz-form-control>
+                          </nz-form-item>
+                        </div>
+                  
+                        <!-- Longitude -->
+                        <div class="col-md-4 mb-3">
+                          <nz-form-item>
+                            <nz-form-label [nzSpan]="24">Longitude</nz-form-label>
+                            <nz-form-control>
+                              <input nz-input formControlName="LONGITUDE" placeholder="Longitude">
+                            </nz-form-control>
+                          </nz-form-item>
+                        </div>
+                  
+                        <!-- Remarks -->
+                        <div class="col-12 mb-3">
+                          <nz-form-item>
+                            <nz-form-label [nzSpan]="24">Remarks</nz-form-label>
+                            <nz-form-control>
+                              <textarea nz-input formControlName="REMARKS" placeholder="Enter remarks"></textarea>
+                            </nz-form-control>
+                          </nz-form-item>
+                        </div>
+                      </div>
+                    </div>
+                  
+                    <!-- Buttons -->
+             
+                  </form>
+                  
+              </div>
+            
+              <div *nzModalFooter>
+              
+                <button nz-button nzType="default" (click)="handleCancel()" class="transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-gray-200">Cancel</button>
+                <button nz-button nzType="primary" (click)="onSubmit(); handleCancel()" [nzLoading]="isConfirmLoading" class="transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-blue-600">Submit</button>
+              </div>
+            </nz-modal>
+            
+            
+
+            
+            
+
+        
+
+        
+          </div>
+        </div>
+      </div>
+
+  <app-footer></app-footer>
+    </div>
+
+ 
+    <!-- End Custom template -->
+  </div>
+  <!--   Core JS Files   -->
+
