@@ -12,7 +12,7 @@
         </a>
         
         <div class="nav-toggle">
-          <button class="btn btn-toggle toggle-sidebar">
+          <button class="btn btn-toggle toggle-sidebar"  onclick="toggleSidebar()">
             <i class="gg-menu-right"></i>
           </button>
           <button class="btn btn-toggle sidenav-toggler">
@@ -25,7 +25,7 @@
       </div>
       <!-- End Logo Header -->
     </div>
-    <div class="sidebar-wrapper h-screen overflow-auto">
+    <div class="sidebar-wrapper h-screen overflow-auto" [ngClass]="{ 'open': isSidebarOpen }">
       <div class="sidebar-content pt-5">
         <ul class="nav nav-secondary">
           <!-- Dashboard -->

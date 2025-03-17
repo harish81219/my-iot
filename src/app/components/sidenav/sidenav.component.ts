@@ -10,6 +10,13 @@ import { Router } from '@angular/router';
 })
 export class SidenavComponent {
   isLoggingOut = false;
+  isSidebarOpen = false;
+
+toggleSidebar() {
+  this.isSidebarOpen = !this.isSidebarOpen;
+}
+
+
 
 
   lottieOptions: AnimationOptions = {
